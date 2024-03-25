@@ -24,11 +24,6 @@ export const postApplication = asycHandler(async (req, res, next) => {
     );
   }
 
-  cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLIENT_NAME,
-    api_key: process.env.CLOUDINARTY_CLIENT_API,
-    api_secret: process.env.CLOUDINARTY_CLIENT_SECRET,
-  });
 
   const cloudinaryResponse = await cloudinary.uploader.upload(
     resume.tempFilePath
