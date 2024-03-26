@@ -56,7 +56,7 @@ export const login = asycHandler(async (req, res, next) => {
 export const logout = asycHandler(async (req, res, next) => {
   res
     .status(200)
-    .clearCookie("token", {
+   .cookie("token", "", {
       httpOnly: true,
       expires: new Date(Date.now()),
     })
