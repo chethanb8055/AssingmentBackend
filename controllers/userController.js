@@ -63,7 +63,7 @@ export const logout = asycHandler(async (req, res, next) => {
     .json(new ApiResponse(200, "", "User loggedOut Successfully"));
 });
 
-export const getUser = asycHandler((req, res, next) => {
+export const getUser = asycHandler(async(req, res, next) => {
   const user = req.user;
   // console.log(user);
   res.status(200).json({
