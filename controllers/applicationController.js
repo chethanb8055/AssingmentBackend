@@ -24,7 +24,6 @@ export const postApplication = asycHandler(async (req, res, next) => {
     );
   }
 
-
   const cloudinaryResponse = await cloudinary.uploader.upload(
     resume.tempFilePath
   );

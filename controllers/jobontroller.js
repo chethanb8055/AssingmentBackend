@@ -10,7 +10,7 @@ export const getAlljob = asycHandler(async (req, res, next) => {
 
 export const postJob = asycHandler(async (req, res, next) => {
   const { role } = req.user;
-  console.log(req.user, "userRequest");
+  // console.log(req.user, "userRequest");
 
   if (role === "Job Seeker") {
     return next(
@@ -124,5 +124,29 @@ export const deleteJob = asycHandler(async (req, res, next) => {
     success: true,
     job: null,
     message: "Job Deleted Successfully",
+  });
+});
+
+export const getOnejob = asycHandler(async (req, res, next) => {
+  const { id } = req.params;
+  let job = await Job.findById(id);
+  if (!job) {
+    return next(new ErrorHandler("Oops the Job ID Not Found", 404));
+  }
+  res.status(200).json({
+    success: true,
+    job: job,
+    message: "Job One geted Successfully",
+  });
+});
+
+export const apply = asycHandler(async (req, res, next) => {
+  const { jobId } = req.body;
+  const userId = req.user._id;
+  console.log(jobId, userId);
+  res.status(200).json({
+    success: true,
+    jobId,
+    message: "Job One geted Successfully",
   });
 });
